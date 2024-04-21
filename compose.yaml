@@ -13,7 +13,7 @@ services:
 
   postgres:
     container_name: king-paimon-postgres
-    image: postgres:15
+    image: postgres:16.2
     restart: always
     volumes:
       - postgres:/var/lib/postgresql/data
