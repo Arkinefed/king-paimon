@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.arkinefed</groupId>
 	<artifactId>king-paimon-rest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.0</version>
 	<name>king-paimon-rest</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
