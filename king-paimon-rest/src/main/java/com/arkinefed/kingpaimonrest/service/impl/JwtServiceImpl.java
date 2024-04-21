@@ -24,6 +24,7 @@ public class JwtServiceImpl implements JwtService {
     @Value("${com.arkinefed.kingpaimonrest.jwt.expiration}")
     private Long expiration;
 
+    @Override
     public String generate(UserDetails userDetails) {
         byte[] keyBytes = Decoders.BASE64.decode(secret);
 
@@ -37,6 +38,7 @@ public class JwtServiceImpl implements JwtService {
                 .compact();
     }
 
+    @Override
     public boolean validate(String token) {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
@@ -57,6 +59,7 @@ public class JwtServiceImpl implements JwtService {
         return false;
     }
 
+    @Override
     public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
