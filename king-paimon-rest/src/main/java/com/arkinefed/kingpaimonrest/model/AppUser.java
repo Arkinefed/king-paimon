@@ -3,6 +3,7 @@ package com.arkinefed.kingpaimonrest.model;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,6 +49,9 @@ public class AppUser implements UserDetails {
     private Role role;
 
     private LocalDateTime whenRegistered;
+
+    @OneToMany(mappedBy = "author")
+    private List<Post> posts;
 
     @Version
     private int lock;
