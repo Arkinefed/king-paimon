@@ -3,8 +3,6 @@ package com.arkinefed.kingpaimonrest.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +17,13 @@ import com.arkinefed.kingpaimonrest.misc.CommonVariables;
 import com.arkinefed.kingpaimonrest.model.AppUser;
 import com.arkinefed.kingpaimonrest.model.Post;
 import com.arkinefed.kingpaimonrest.service.PostService;
+import com.arkinefed.kingpaimonrest.utils.AppUserUtils;
 
 @RestController
 @RequestMapping(CommonVariables.API_V1)
 public class PostController {
     @Autowired
-    PostService postService;
+    private PostService postService;
 
     @GetMapping("/public/posts")
     public ResponseEntity<?> getPosts() {
@@ -55,8 +54,7 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("too long content; max " + String.valueOf(8192));
         }
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        AppUser user = (AppUser) authentication.getPrincipal();
+        AppUser user = AppUserUtils.getAppUserPerformingRequest();
 
         Post post = postService.addPost(request, user);
 
