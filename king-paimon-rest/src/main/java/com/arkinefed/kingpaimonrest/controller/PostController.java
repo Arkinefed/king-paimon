@@ -25,7 +25,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/public/posts")
+    @GetMapping("/public/post/all")
     public ResponseEntity<?> getPosts() {
         return ResponseEntity.ok(postService.getPosts());
     }
@@ -39,7 +39,7 @@ public class PostController {
         }
     }
 
-    @PutMapping("/admin/add-post")
+    @PutMapping("/admin/post/add")
     public ResponseEntity<?> addPost(@RequestBody AddPostRequest request) {
         if (request.getTitle() == null ||
                 request.getContent() == null) {
@@ -61,7 +61,7 @@ public class PostController {
         return ResponseEntity.ok(post.getId());
     }
 
-    @DeleteMapping("/admin/remove-post/{id}")
+    @DeleteMapping("/admin/post/{id}/remove")
     public ResponseEntity<?> removePost(@PathVariable Long id) {
         try {
             postService.removePost(id);
