@@ -1,12 +1,14 @@
 package com.arkinefed.kingpaimonrest.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.arkinefed.kingpaimonrest.data.request.AddPostRequest;
+import com.arkinefed.kingpaimonrest.data.response.PostData;
 import com.arkinefed.kingpaimonrest.exception.PostNotFoundException;
 import com.arkinefed.kingpaimonrest.model.AppUser;
 import com.arkinefed.kingpaimonrest.model.Post;
@@ -21,14 +23,24 @@ public class PostServiceImpl implements PostService {
     PostRepository postRepository;
 
     @Override
-    public List<Post> getPosts() {
-        return postRepository.findAll();
+    public List<PostData> getPosts() {
+        List<Post> posts = postRepository.findAll();
+
+        List<PostData> data = new ArrayList<>();
+
+        for (Post post : posts) {
+            data.add(PostData.fromPost(post));
+        }
+
+        return data;
     }
 
     @Override
-    public Post getPost(Long id) throws PostNotFoundException {
-        return postRepository.findById(id)
+    public PostData getPost(Long id) throws PostNotFoundException {
+        Post post = postRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException("post " + String.valueOf(id) + " not found"));
+
+        return PostData.fromPost(post);
     }
 
     @Override

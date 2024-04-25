@@ -27,13 +27,13 @@ public class Post {
     private Long id;
 
     @ManyToOne
-    AppUser author;
+    private AppUser author;
 
     @Column(length = 128)
-    String title;
+    private String title;
 
     @Column(length = 8192)
-    String content;
+    private String content;
 
     private LocalDateTime whenAdded;
 
