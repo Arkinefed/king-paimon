@@ -33,6 +33,14 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("not all required values were provided");
         }
 
+        if (request.getUsername().length() > 128 ||
+                request.getPassword().length() > 128 ||
+                request.getEmail().length() > 128 ||
+                request.getFirstName().length() > 128 ||
+                request.getLastName().length() > 128) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("some values were too long");
+        }
+
         try {
             return ResponseEntity.ok(authService.register(request));
         } catch (UserAlreadyExistsException e) {

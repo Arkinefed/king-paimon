@@ -35,14 +35,17 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 128)
     private String username;
+    @Column(length = 128)
     private String password;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 128)
     private String email;
 
+    @Column(length = 128)
     private String firstName;
+    @Column(length = 128)
     private String lastName;
 
     @Enumerated(EnumType.STRING)
