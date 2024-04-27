@@ -14,7 +14,6 @@ import com.arkinefed.kingpaimonrest.data.request.RegisterRequest;
 import com.arkinefed.kingpaimonrest.exception.UserAlreadyExistsException;
 import com.arkinefed.kingpaimonrest.exception.UserNotFound;
 import com.arkinefed.kingpaimonrest.model.AppUser;
-import com.arkinefed.kingpaimonrest.model.Role;
 import com.arkinefed.kingpaimonrest.repository.AppUserRepository;
 import com.arkinefed.kingpaimonrest.service.AuthService;
 import com.arkinefed.kingpaimonrest.service.JwtService;
@@ -43,7 +42,7 @@ public class AuthServiceImpl implements AuthService {
                 .email(data.getEmail().toLowerCase())
                 .firstName(data.getFirstName())
                 .lastName(data.getLastName())
-                .role(Role.user)
+                .role(AppUser.Role.user)
                 .whenRegistered(LocalDateTime.now())
                 .build();
 

@@ -31,6 +31,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AppUser implements UserDetails {
+    public enum Role {
+        user,
+        admin
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -55,6 +60,13 @@ public class AppUser implements UserDetails {
 
     @OneToMany(mappedBy = "author")
     private List<Post> posts;
+
+    @OneToMany(mappedBy = "author")
+    private List<Comment> comments;
+
+    public boolean isAdmin() {
+        return role.equals(Role.admin);
+    }
 
     @Version
     private int lock;

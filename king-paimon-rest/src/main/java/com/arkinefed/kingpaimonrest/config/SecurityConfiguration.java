@@ -15,11 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.arkinefed.kingpaimonrest.model.Role;
+import com.arkinefed.kingpaimonrest.model.AppUser;
 import com.arkinefed.kingpaimonrest.service.AppUserService;
 
 import lombok.RequiredArgsConstructor;
-
 
 @Configuration
 @EnableWebSecurity
@@ -32,13 +31,20 @@ public class SecurityConfiguration {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        request ->
-                                request
-                                        .requestMatchers("/api/v1/auth/**").permitAll()
-                                        .requestMatchers("/api/v1/admin/**").hasAuthority(Role.admin.name())
-                                        .requestMatchers("/api/v1/user/**").hasAnyAuthority(Role.admin.name(), Role.user.name())
-                                        .requestMatchers("/api/v1/public/**").permitAll()
-                                        .anyRequest().authenticated())
+                        request -> request
+                                .requestMatchers("/api/v1/auth/**")
+                                .permitAll()
+
+                                .requestMatchers("/api/v1/admin/**")
+                                .hasAuthority(AppUser.Role.admin.name())
+
+                                .requestMatchers("/api/v1/user/**")
+                                .hasAnyAuthority(AppUser.Role.admin.name(), AppUser.Role.user.name())
+
+                                .requestMatchers("/api/v1/public/**")
+                                .permitAll()
+
+                                .anyRequest().authenticated())
                 .sessionManagement(
                         manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(

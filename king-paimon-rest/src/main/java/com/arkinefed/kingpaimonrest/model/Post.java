@@ -1,6 +1,7 @@
 package com.arkinefed.kingpaimonrest.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +38,9 @@ public class Post {
     private String content;
 
     private LocalDateTime whenAdded;
+
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments;
 
     @Version
     private int lock;

@@ -7,6 +7,7 @@ import com.arkinefed.kingpaimonrest.data.response.PostData;
 import com.arkinefed.kingpaimonrest.model.AppUser;
 import com.arkinefed.kingpaimonrest.model.Post;
 
+
 public interface PostService {
     List<PostData> getPosts();
 
