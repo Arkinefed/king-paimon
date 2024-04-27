@@ -26,8 +26,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment getComment(Long id) {
-        return commentRepository.findById(id)
-                .orElseThrow(() -> new CommentNotFoundException("comment " + String.valueOf(id) + " not found"));
+        return commentRepository.findById(id).orElseThrow(() -> new CommentNotFoundException(id));
     }
 
     @Override
@@ -46,9 +45,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Comment addComment(AddCommentRequest data, AppUser author) {
         Post post = postRepository.findById(data.getPostId())
-                .orElseThrow(
-                        () -> new CommentNotFoundException(
-                                "comment " + String.valueOf(data.getPostId()) + " not found"));
+                .orElseThrow(() -> new CommentNotFoundException(data.getPostId()));
 
         Comment comment = Comment.builder()
                 .author(author)
@@ -63,7 +60,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void removeComment(Long id) {
         if (!commentRepository.existsById(id)) {
-            throw new CommentNotFoundException("comment " + String.valueOf(id) + " not found");
+            throw new CommentNotFoundException(id);
         }
 
         commentRepository.deleteById(id);

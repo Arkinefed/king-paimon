@@ -1,6 +1,7 @@
 package com.arkinefed.kingpaimonrest.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.arkinefed.kingpaimonrest.data.request.LoginRequest;
 import com.arkinefed.kingpaimonrest.data.request.RegisterRequest;
+import com.arkinefed.kingpaimonrest.exception.EmailAlreadyTakenException;
 import com.arkinefed.kingpaimonrest.exception.UserAlreadyExistsException;
 import com.arkinefed.kingpaimonrest.exception.UserNotFound;
 import com.arkinefed.kingpaimonrest.model.AppUser;
@@ -31,9 +33,16 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String register(RegisterRequest data) throws UserAlreadyExistsException {
-        if (appUserRepository.existsByUsername(data.getUsername().toLowerCase()) ||
-                appUserRepository.existsByEmail(data.getEmail().toLowerCase())) {
-            throw new UserAlreadyExistsException("username " + data.getUsername() + " is already taken");
+        if (appUserRepository.existsByEmail(data.getEmail().toLowerCase())) {
+            throw new EmailAlreadyTakenException(data.getEmail());
+        }
+
+        if (appUserRepository.existsByUsername(data.getUsername().toLowerCase())) {
+            Optional<AppUser> user = appUserRepository.findByUsername(data.getUsername().toLowerCase());
+
+            if (user.isPresent() && data.getUsername().toLowerCase().equals(user.get().getUsername())) {
+                throw new UserAlreadyExistsException(data.getUsername());
+            }
         }
 
         AppUser user = AppUser.builder()
@@ -54,14 +63,14 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String login(LoginRequest data) throws UserNotFound, IllegalArgumentException, AuthenticationException {
         if (!appUserRepository.existsByUsername(data.getUsername().toLowerCase())) {
-            throw new UserNotFound("user " + data.getUsername() + " not found");
+            throw new UserNotFound(data.getUsername());
         }
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(data.getUsername().toLowerCase(), data.getPassword()));
 
         AppUser user = appUserRepository.findByUsername(data.getUsername().toLowerCase())
-                .orElseThrow(() -> new UserNotFound("user " + data.getUsername() + " not found"));
+                .orElseThrow(() -> new UserNotFound(data.getUsername()));
 
         return jwtService.generate(user);
     }

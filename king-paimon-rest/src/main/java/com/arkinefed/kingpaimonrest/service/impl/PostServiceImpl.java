@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostData getPost(Long id) throws PostNotFoundException {
         Post post = postRepository.findById(id)
-                .orElseThrow(() -> new PostNotFoundException("post " + String.valueOf(id) + " not found"));
+                .orElseThrow(() -> new PostNotFoundException(id));
 
         return PostData.fromPost(post);
     }
@@ -59,7 +59,7 @@ public class PostServiceImpl implements PostService {
     @Transactional
     public void removePost(Long id) {
         if (!postRepository.existsById(id)) {
-            throw new PostNotFoundException("post " + String.valueOf(id) + " not found");
+            throw new PostNotFoundException(id);
         }
 
         postRepository.deleteById(id);

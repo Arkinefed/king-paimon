@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.arkinefed.kingpaimonrest.data.request.LoginRequest;
 import com.arkinefed.kingpaimonrest.data.request.RegisterRequest;
+import com.arkinefed.kingpaimonrest.exception.EmailAlreadyTakenException;
 import com.arkinefed.kingpaimonrest.exception.UserAlreadyExistsException;
 import com.arkinefed.kingpaimonrest.exception.UserNotFound;
 import com.arkinefed.kingpaimonrest.misc.CommonVariables;
@@ -56,6 +57,8 @@ public class AuthController {
         try {
             return ResponseEntity.ok(authService.register(request));
         } catch (UserAlreadyExistsException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (EmailAlreadyTakenException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
