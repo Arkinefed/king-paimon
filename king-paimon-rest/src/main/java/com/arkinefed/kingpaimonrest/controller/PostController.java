@@ -43,15 +43,15 @@ public class PostController {
     public ResponseEntity<?> addPost(@RequestBody AddPostRequest request) {
         if (request.getTitle() == null ||
                 request.getContent() == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("not all required values were provided");
+            return ResponseEntity.badRequest().body("not all required values were provided");
         }
 
         if (request.getTitle().length() > 128) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("too long title; max " + String.valueOf(128));
+            return ResponseEntity.badRequest().body("too long title; max " + String.valueOf(128));
         }
 
         if (request.getContent().length() > 8192) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("too long content; max " + String.valueOf(8192));
+            return ResponseEntity.badRequest().body("too long content; max " + String.valueOf(8192));
         }
 
         AppUser user = AppUserUtils.getAppUserPerformingRequest();
