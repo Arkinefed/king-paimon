@@ -41,6 +41,14 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("some values were too long");
         }
 
+        if (!request.getUsername().matches("^[a-zA-Z0-9_]*$") ||
+                !request.getEmail().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$") ||
+                !request.getFirstName().matches("^[a-zA-Z-]*$") ||
+                !request.getLastName().matches("^[a-zA-Z-]*$") ||
+                !request.getPassword().equals(request.getPassword().replaceAll("\\s+", ""))) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("some values were invalid");
+        }
+
         try {
             return ResponseEntity.ok(authService.register(request));
         } catch (UserAlreadyExistsException e) {
