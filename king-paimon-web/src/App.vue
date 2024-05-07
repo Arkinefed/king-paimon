@@ -1,29 +1,26 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
     <header>
-        <img
-            alt="King Paimon logo"
-            class="logo"
-            src="@/assets/Paimon.jpg"
-            width="125"
-            height="125"
-        />
+        <RouterLink to="/">
+            <img alt="King Paimon logo" class="logo" src="@/assets/Paimon.jpg" />
 
-        <div class="wrapper">
-            <HelloWorld msg="You did it!" />
-
-            <nav>
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
-            </nav>
-        </div>
+            <h1>King Paimon</h1>
+        </RouterLink>
     </header>
 
     <RouterView />
+
+    <footer>
+        <h3 class="red">
+            &copy; 2024
+            <a href="https://open.spotify.com/artist/6nHoVYudIbrQ8Kz1oMudtQ" target="_blank">
+                Arkinefed
+            </a>
+        </h3>
+    </footer>
 </template>
 
 <style scoped>
@@ -32,60 +29,36 @@ header {
     max-height: 100vh;
 }
 
+header h1 {
+    font-weight: 500;
+    font-size: 2.6rem;
+}
+
 .logo {
-    display: block;
-    margin: 0 auto 2rem;
+    width: auto;
+    height: 250px;
 }
 
-nav {
-    width: 100%;
-    font-size: 12px;
+a {
+    padding: 2rem 0 0 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
     text-align: center;
-    margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-    color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-    background-color: transparent;
-}
-
-nav a {
-    display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-    border: 0;
+    padding: 1rem;
 }
 
 @media (min-width: 1024px) {
     header {
         display: flex;
+        flex-direction: column;
         place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
     }
 
-    .logo {
-        margin: 0 2rem 0 0;
-    }
-
-    header .wrapper {
-        display: flex;
-        place-items: flex-start;
-        flex-wrap: wrap;
-    }
-
-    nav {
-        text-align: left;
-        margin-left: -1rem;
-        font-size: 1rem;
-
-        padding: 1rem 0;
-        margin-top: 1rem;
+    header h1 {
+        font-size: 2.7rem;
     }
 }
 </style>
