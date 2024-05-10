@@ -15,7 +15,6 @@
 <style scoped>
 .item {
     display: flex;
-    align-items: center;
     flex-direction: column;
     padding: 1rem;
     border: 1px solid var(--color-text);
@@ -55,6 +54,12 @@ p {
         height: 100%;
         flex-direction: column;
         justify-content: flex-start;
+    }
+
+    .item::v-deep(img) {
+        max-width: 25%;
+        width: 25%;
+        height: auto;
     }
 }
 </style>

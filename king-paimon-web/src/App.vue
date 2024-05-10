@@ -35,8 +35,8 @@ header h1 {
 }
 
 .logo {
-    width: auto;
-    height: 250px;
+    width: 75%;
+    height: auto;
 }
 
 a {
@@ -59,6 +59,12 @@ h3 {
 
     header h1 {
         font-size: 2.7rem;
+        text-align: center;
+    }
+
+    .logo {
+        width: 300px;
+        height: auto;
     }
 }
 </style>

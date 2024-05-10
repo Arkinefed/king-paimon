@@ -9,6 +9,7 @@
     .about {
         display: flex;
         align-items: center;
+        width: 1000px;
     }
 }
 </style>
