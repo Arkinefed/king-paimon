@@ -12,3 +12,12 @@ app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
+
+import { useUserStore } from './stores/user'
+
+// get data from localStorage
+const userStore = useUserStore()
+
+userStore.setUsername(localStorage.getItem('username') || '')
+userStore.setToken(localStorage.getItem('token') || '')
+userStore.setRole(localStorage.getItem('role') || '')

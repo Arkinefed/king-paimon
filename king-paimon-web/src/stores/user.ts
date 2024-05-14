@@ -9,14 +9,20 @@ export const useUserStore = defineStore('user', () => {
 
     const setUsername = (name: string) => {
         username.value = name
+
+        localStorage.setItem('username', name)
     }
 
     const setToken = (t: string) => {
         token.value = t
+
+        localStorage.setItem('username', t)
     }
 
     const setRole = (r: string) => {
         role.value = r
+
+        localStorage.setItem('username', r)
     }
 
     const isAdmin = computed(() => role.value === 'admin')
