@@ -7,7 +7,7 @@ import HomeItem from './HomeItem.vue'
     <RouterLink to="/">
         <HomeItem>
             <template #image>
-                <img src="@/assets/Paimon.jpg" alt="King Paimon" />
+                <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
             <template #heading>Home</template>
             <template #description>
@@ -19,7 +19,7 @@ import HomeItem from './HomeItem.vue'
     <RouterLink to="/">
         <HomeItem>
             <template #image>
-                <img src="@/assets/Paimon.jpg" alt="King Paimon" />
+                <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
             <template #heading>Posts</template>
             <template #description>
@@ -28,10 +28,22 @@ import HomeItem from './HomeItem.vue'
         </HomeItem>
     </RouterLink>
 
+    <RouterLink to="/">
+        <HomeItem>
+            <template #image>
+                <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
+            </template>
+            <template #heading>Weather</template>
+            <template #description>
+                Check today's and tommorow's weather forecast. Will it rain?
+            </template>
+        </HomeItem>
+    </RouterLink>
+
     <RouterLink to="/about">
         <HomeItem>
             <template #image>
-                <img src="@/assets/Paimon.jpg" alt="King Paimon" />
+                <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
             <template #heading>About</template>
             <template #description>

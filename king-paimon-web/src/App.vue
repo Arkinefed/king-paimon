@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
     <header>
         <RouterLink to="/">
-            <img alt="King Paimon logo" class="logo" src="@/assets/Paimon.jpg" />
+            <img alt="King Paimon logo" class="logo" src="@/assets/img/Paimon.jpg" />
 
             <h1>King Paimon</h1>
         </RouterLink>

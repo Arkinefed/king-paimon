@@ -10,7 +10,7 @@
     --vt-c-divider-light: #000000;
     --vt-c-divider-dark: #ffffff;
 
-    --vt-c-text-light: var(--vt-c-white);
+    --vt-c-text-light: var(--vt-c-black);
     --vt-c-text-dark: var(--vt-c-white);
 }
 
@@ -22,8 +22,6 @@
 
     --color-heading: var(--vt-c-text-light);
     --color-text: var(--vt-c-text-light);
-
-    --section-gap: 160px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,8 +52,7 @@ body {
         color 0.5s,
         background-color 0.5s;
     line-height: 1.6;
-    font-family:
-        Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 15px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
