@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
+import AccountSection from '@/components/AccountSection.vue'
 </script>
 
 <template>
@@ -10,6 +12,8 @@ import { RouterLink, RouterView } from 'vue-router'
             <h1>King Paimon</h1>
         </RouterLink>
     </header>
+
+    <AccountSection />
 
     <RouterView />
 

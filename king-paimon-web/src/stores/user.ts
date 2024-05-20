@@ -9,6 +9,19 @@ export const useUserStore = defineStore('user', () => {
 
     const role = ref('')
 
+    const login = (newUsername: string, newToken: string, newRole: string) => {
+        setLogged(true)
+        setUsername(newUsername)
+        setToken(newToken)
+        setRole(newRole)
+    }
+
+    const logout = () => {
+        localStorage.clear()
+    }
+
+    const isAdmin = computed(() => role.value === 'admin')
+
     const setLogged = (l: boolean) => {
         logged.value = l
 
@@ -24,7 +37,7 @@ export const useUserStore = defineStore('user', () => {
     const setToken = (t: string) => {
         token.value = t
 
-        localStorage.setItem('toke', t)
+        localStorage.setItem('token', t)
     }
 
     const setRole = (r: string) => {
@@ -33,7 +46,5 @@ export const useUserStore = defineStore('user', () => {
         localStorage.setItem('role', r)
     }
 
-    const isAdmin = computed(() => role.value === 'admin')
-
-    return { logged, username, token, role, setLogged, setUsername, setToken, setRole, isAdmin }
+    return { logged, username, token, login, logout, isAdmin }
 })

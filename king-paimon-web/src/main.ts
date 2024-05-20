@@ -18,6 +18,14 @@ import { useUserStore } from './stores/user'
 // get data from localStorage
 const userStore = useUserStore()
 
-userStore.setUsername(localStorage.getItem('username') || '')
-userStore.setToken(localStorage.getItem('token') || '')
-userStore.setRole(localStorage.getItem('role') || '')
+const logged = localStorage.getItem('logged') || false
+
+if (logged) {
+    userStore.login(
+        localStorage.getItem('username') || '',
+        localStorage.getItem('token') || '',
+        localStorage.getItem('role') || ''
+    )
+} else {
+    userStore.logout()
+}
