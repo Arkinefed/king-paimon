@@ -9,9 +9,9 @@ import HomeItem from './HomeItem.vue'
             <template #image>
                 <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
-            <template #heading>Home</template>
+            <template #heading>Dom</template>
             <template #description>
-                Main page. Welcome to the King Paimon website. Music, art, and more.
+                Strona główna. Witamy na stronie King Paimon. Muzyka, sztuka i więcej.
             </template>
         </HomeItem>
     </RouterLink>
@@ -21,9 +21,9 @@ import HomeItem from './HomeItem.vue'
             <template #image>
                 <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
-            <template #heading>Posts</template>
+            <template #heading>Posty</template>
             <template #description>
-                Posts about music. King Paimon gave me this music. I am grateful.
+                Posty o muzyce. King Paimon dał mi tę muzykę. Jestem wdzięczny.
             </template>
         </HomeItem>
     </RouterLink>
@@ -33,9 +33,9 @@ import HomeItem from './HomeItem.vue'
             <template #image>
                 <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
-            <template #heading>Weather</template>
+            <template #heading>Pogoda</template>
             <template #description>
-                Check today's and tommorow's weather forecast. Will it rain?
+                Sprawdź dzisiejszą i jutrzejszą prognozę pogody. Czy będzie padać?
             </template>
         </HomeItem>
     </RouterLink>
@@ -45,9 +45,9 @@ import HomeItem from './HomeItem.vue'
             <template #image>
                 <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
             </template>
-            <template #heading>About</template>
+            <template #heading>O King Paimon</template>
             <template #description>
-                King Paimon is a demon described in the Lesser Key of Solomon and the Ars Goetia.
+                King Paimon; King Paimon; King Paimon; King Paimon; King Paimon
             </template>
         </HomeItem>
     </RouterLink>
