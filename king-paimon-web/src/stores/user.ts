@@ -2,10 +2,18 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
+    const logged = ref(false)
+
     const username = ref('')
     const token = ref('')
 
     const role = ref('')
+
+    const setLogged = (l: boolean) => {
+        logged.value = l
+
+        localStorage.setItem('logged', l.toString())
+    }
 
     const setUsername = (name: string) => {
         username.value = name
@@ -16,16 +24,16 @@ export const useUserStore = defineStore('user', () => {
     const setToken = (t: string) => {
         token.value = t
 
-        localStorage.setItem('username', t)
+        localStorage.setItem('toke', t)
     }
 
     const setRole = (r: string) => {
         role.value = r
 
-        localStorage.setItem('username', r)
+        localStorage.setItem('role', r)
     }
 
     const isAdmin = computed(() => role.value === 'admin')
 
-    return { username, token, role, setUsername, setToken, setRole, isAdmin }
+    return { logged, username, token, role, setLogged, setUsername, setToken, setRole, isAdmin }
 })
