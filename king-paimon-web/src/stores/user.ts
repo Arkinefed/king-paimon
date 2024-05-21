@@ -17,6 +17,11 @@ export const useUserStore = defineStore('user', () => {
     }
 
     const logout = () => {
+        setLogged(false)
+        setUsername('')
+        setToken('')
+        setRole('')
+
         localStorage.clear()
     }
 

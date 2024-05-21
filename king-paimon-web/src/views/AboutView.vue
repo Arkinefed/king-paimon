@@ -33,7 +33,7 @@
             szczególnie cennym sprzymierzeńcem dla tych, którzy potrafią go odpowiednio przywołać.
         </p>
 
-        <h1>Przywoływanie i Współpraca</h1>
+        <h1 class="red">Przywoływanie i Współpraca</h1>
         <p>
             Przywołanie Paimona wymaga precyzyjnych rytuałów i odpowiedniego przygotowania. W
             tradycji okultystycznej ważne jest, aby odbywało się to z szacunkiem i zgodnie z
