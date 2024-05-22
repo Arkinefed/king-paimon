@@ -7,7 +7,7 @@ const userStore = useUserStore()
 
 const logout = () => {
     userStore.logout()
-    router.replace('/')
+    router.push('/')
 }
 </script>
 

@@ -3,9 +3,9 @@ package com.arkinefed.kingpaimonrest.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.arkinefed.kingpaimonrest.model.AppUser;
 import com.arkinefed.kingpaimonrest.service.JwtService;
 
 import io.jsonwebtoken.ExpiredJwtException;
@@ -25,15 +25,16 @@ public class JwtServiceImpl implements JwtService {
     private Long expiration;
 
     @Override
-    public String generate(UserDetails userDetails) {
+    public String generate(AppUser user) {
         byte[] keyBytes = Decoders.BASE64.decode(secret);
 
         Date now = new Date(System.currentTimeMillis());
 
         return Jwts.builder()
-                .setSubject(userDetails.getUsername())
+                .setSubject(user.getUsername())
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + expiration * 1000))
+                .claim("role", user.getRole())
                 .signWith(Keys.hmacShaKeyFor(keyBytes), SignatureAlgorithm.HS512)
                 .compact();
     }

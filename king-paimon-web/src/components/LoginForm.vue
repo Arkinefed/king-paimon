@@ -15,8 +15,12 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
+import { useUserStore } from '@/stores/user'
 import axiosRest from '@/utils/axios/axiosRest'
 import { ref } from 'vue'
+
+const userStore = useUserStore()
 
 const username = ref('')
 const password = ref('')
@@ -29,7 +33,12 @@ const onSubmit = () => {
                 password: password.value
             })
             .then((result) => {
-                console.log(result)
+                const parts = result.data.split('.')
+                const payload = JSON.parse(window.atob(parts[1]))
+
+                userStore.login(payload.sub, result.data, payload.role)
+
+                router.push('/')
             })
             .catch((error) => {
                 console.log(error)
