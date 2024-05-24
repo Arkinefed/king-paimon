@@ -3,7 +3,7 @@
         <div class="post-item">
             <h1>{{ title }}</h1>
             <h2>{{ author }}</h2>
-            <p class="date">{{ `${whenAdded[0]}/${whenAdded[1]}/${whenAdded[0]}` }}</p>
+            <p class="date">{{ `${whenAdded[0]}/${whenAdded[1]}/${whenAdded[2]}` }}</p>
         </div>
     </RouterLink>
 </template>

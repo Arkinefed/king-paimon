@@ -24,7 +24,7 @@ interface Post {
     author: string
     title: string
     content: string
-    whenAdded: string
+    whenAdded: Array<number>
 }
 
 const posts = ref<Post[]>([])
