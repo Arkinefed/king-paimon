@@ -16,7 +16,7 @@ import HomeItem from './HomeItem.vue'
         </HomeItem>
     </RouterLink>
 
-    <RouterLink to="/">
+    <RouterLink to="/posts">
         <HomeItem>
             <template #image>
                 <img src="@/assets/img/Miroslavs_Gospel_001.png" alt="King Paimon" />
