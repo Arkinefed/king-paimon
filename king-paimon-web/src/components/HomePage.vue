@@ -19,7 +19,7 @@ import HomeItem from './HomeItem.vue'
     <RouterLink to="/">
         <HomeItem>
             <template #image>
-                <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
+                <img src="@/assets/img/Miroslavs_Gospel_001.png" alt="King Paimon" />
             </template>
             <template #heading>Posty</template>
             <template #description>
@@ -31,7 +31,10 @@ import HomeItem from './HomeItem.vue'
     <RouterLink to="/">
         <HomeItem>
             <template #image>
-                <img src="@/assets/img/Paimon.jpg" alt="King Paimon" />
+                <img
+                    src="@/assets/img/Ruzena_Maturova_as_the_first_Rusalka.png"
+                    alt="King Paimon"
+                />
             </template>
             <template #heading>Pogoda</template>
             <template #description>
