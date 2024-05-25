@@ -1,0 +1,60 @@
+:root {
+    --vt-c-white: #ffffff;
+    --vt-c-white-soft: #f8f8f8;
+    --vt-c-white-mute: #f2f2f2;
+
+    --vt-c-black: #000000;
+
+    --vt-c-bleached-red: #ff5353;
+
+    --vt-c-divider-light: #000000;
+    --vt-c-divider-dark: #ffffff;
+
+    --vt-c-text-light: var(--vt-c-black);
+    --vt-c-text-dark: var(--vt-c-white);
+}
+
+:root {
+    --color-background: var(--vt-c-white);
+
+    --color-border: var(--vt-c-divider-light);
+    --color-border-hover: var(--vt-c-bleached-red);
+
+    --color-heading: var(--vt-c-text-light);
+    --color-text: var(--vt-c-text-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: var(--vt-c-black);
+
+        --color-border: var(--vt-c-divider-dark);
+        --color-border-hover: var(--vt-c-bleached-red);
+
+        --color-heading: var(--vt-c-text-dark);
+        --color-text: var(--vt-c-text-dark);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition:
+        color 0.5s,
+        background-color 0.5s;
+    line-height: 1.6;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

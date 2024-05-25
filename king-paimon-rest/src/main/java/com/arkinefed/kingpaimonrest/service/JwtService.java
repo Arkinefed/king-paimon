@@ -1,9 +1,9 @@
 package com.arkinefed.kingpaimonrest.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import com.arkinefed.kingpaimonrest.model.AppUser;
 
 public interface JwtService {
-    public String generate(UserDetails userDetails);
+    public String generate(AppUser user);
 
     public boolean validate(String token);
 
