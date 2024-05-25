@@ -33,8 +33,13 @@ const router = createRouter({
             component: () => import('../views/PostView.vue')
         },
         {
+            path: '/admin',
+            name: 'admin',
+            component: () => import('../views/AdminPage.vue')
+        },
+        {
             path: '/:pathMatch(.*)*',
-            name: 'NotFound',
+            name: 'notfound',
             component: () => import('../views/NotFound.vue')
         }
     ]

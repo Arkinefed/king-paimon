@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import HomeItem from './HomeItem.vue'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 </script>
 
 <template>
@@ -19,7 +22,7 @@ import HomeItem from './HomeItem.vue'
     <RouterLink to="/posts">
         <HomeItem>
             <template #image>
-                <img src="@/assets/img/Miroslavs_Gospel_001.png" alt="King Paimon" />
+                <img src="@/assets/img/Miroslavs_Gospel_001.png" alt="Miroslavs Gospel" />
             </template>
             <template #heading>Posty</template>
             <template #description>
@@ -33,7 +36,7 @@ import HomeItem from './HomeItem.vue'
             <template #image>
                 <img
                     src="@/assets/img/Ruzena_Maturova_as_the_first_Rusalka.png"
-                    alt="King Paimon"
+                    alt="Ruzena Maturova"
                 />
             </template>
             <template #heading>Pogoda</template>
@@ -42,6 +45,18 @@ import HomeItem from './HomeItem.vue'
             </template>
         </HomeItem>
     </RouterLink>
+
+    <template v-if="userStore.isAdmin">
+        <RouterLink to="/admin">
+            <HomeItem>
+                <template #image>
+                    <img src="@/assets/img/Dollarnote_siegel_hq.png" alt="Dollarnote" />
+                </template>
+                <template #heading>Admin</template>
+                <template #description> Σ Σ Σ Σ Σ </template>
+            </HomeItem>
+        </RouterLink>
+    </template>
 
     <RouterLink to="/about">
         <HomeItem>
