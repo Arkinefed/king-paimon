@@ -31,7 +31,7 @@ const userStore = useUserStore()
         </HomeItem>
     </RouterLink>
 
-    <RouterLink to="/">
+    <RouterLink to="/weather">
         <HomeItem>
             <template #image>
                 <img
