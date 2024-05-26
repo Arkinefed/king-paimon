@@ -1,4 +1,4 @@
-package com.arkinefed.kingpaimonrest.config;
+package com.arkinefed.kingpaimonweather.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
