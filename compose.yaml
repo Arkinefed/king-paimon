@@ -16,7 +16,7 @@ services:
         build:
             context: ./king-paimon-web
         ports:
-            - 8081:80
+            - 8082:80
         networks:
             - web-network
         depends_on:
@@ -41,10 +41,36 @@ services:
             interval: 10s
             timeout: 5s
             retries: 5
+    
+    weather:
+        container_name: king-paimon-weather
+        build:
+            context: ./king-paimon-weather
+        ports:
+            - 8081:8080
+        networks:
+            - weather-network
+        depends_on:
+            - mongodb
+
+    mongodb:
+        container_name: mongodb
+        image: mongo:latest
+        restart: always
+        volumes:
+            - mongodb-data:/data/db
+            - mongodb-config:/data/configdb
+        ports:
+            - 27017:27017
+        networks:
+            - weather-network
 
 volumes:
     postgres:
+    mongodb-data:
+    mongodb-config:
 
 networks:
     rest-network:
     web-network:
+    weather-network:

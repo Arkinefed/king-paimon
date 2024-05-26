@@ -33,6 +33,11 @@ const router = createRouter({
             component: () => import('../views/PostView.vue')
         },
         {
+            path: '/weather',
+            name: 'weather',
+            component: () => import('../views/WeatherView.vue')
+        },
+        {
             path: '/admin',
             name: 'admin',
             component: () => import('../views/AdminPage.vue')
